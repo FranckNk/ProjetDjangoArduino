@@ -3,6 +3,7 @@ from index.controller import *
 
 # Create your views here.
 def index_view (request):
+    valeur = readValue(5)
     if request.POST:
         id = request.POST['id']
         if int(id) == 1:
@@ -22,5 +23,8 @@ def index_view (request):
             print("Eteignons toutes les LED")
         elif int(id) == 6:
             blinkall()
-        print(id)
+        elif int(id) == 7:
+            readValue(5)
+        # print(id)
+    # ,{'valeur_lue' : valeur}
     return render(request, 'index.html')
