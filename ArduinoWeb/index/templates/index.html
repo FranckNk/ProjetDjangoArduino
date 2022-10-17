@@ -16,65 +16,36 @@
 
 <body>
     <br><br><br>
+    {%for a in valeur_lue%}
 
     <div class="container">
+        <form method="POST">{% csrf_token %}
+            <input type="hidden" value="7" name="id">
+            <button class="btn btn-info  w-50 "><br><h2>Get Values</h2><br></button> <br>
+        </form>
+        <br><br><br><br>
+        
         <div class="row">
             <div class="col-sm-12 text-center mt-2">
-                <h1>Controlons une LED à partir du WEB avec Django</h1>
+                <h1>TEMPERATURE ET HUMIDITE</h1>
             </div>
         </div>
-        <br><br><br><br><br><br><br>
+        <br><br><br><br>
+        
         <div class="row">
             <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="1" name="id">
-                    <button class="btn btn-danger mb-2 w-100"><br><h2>Led Rouge</h2><br></button> <br>
-                </form>
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="2" name="id">
-                    <button class="btn btn-info mb-2 w-100"><br><h2>Led Bleue</h2><br></button> <br>
-                </form>
+                    <div class="btn btn-succes mb-2 w-100"><br><h2>Temperature :  {{a.temperature}}</h2><br></div> <br>
             </div>
             <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="3" name="id">
-                    <button class="btn btn-success mb-2 w-100"><br><h2>Led Verte</h2><br></button> <br>
-                </form>
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="4" name="id">
-                    <button class="btn btn-warning mb-2 w-100"><br><h2>Led Jaune</h2><br></button> <br>
-                </form>
+                    <div class="btn btn-danger mb-2 w-100"><br><h2>Humidite :{{a.humidite}} </h2><br></div> <br>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="6" name="id">
-                    <button class="btn btn-primary mb-2 w-100"><br><h2>Blink tout</h2><br></button> <br>
-                </form>
-            </div>
-            <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="5" name="id">
-                    <button class="btn btn-dark mb-2 w-100"><br><h2>Eteindre tout</h2><br></button> <br>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden" value="7" name="id">
-                    <button class="btn btn-primary mb-2 w-100"><br><h2>Lire la broche analogue 5 </h2><br></button> <br>
-                </form>
-            </div>
-            <div class="col-6 text-center">
-                <form method="POST">{% csrf_token %}
-                    <input type="hidden"  >
-                    <button class="btn btn-dark mb-2 w-100"><br><h2>La valeur lue est : </h2><br></button> <br>
-                </form>
-            </div>
+        {%endfor%}
+
         </div>
     </div>
+    
+</script>
+
         <!-- 
     Custom Scripts -->
     <script src="{% static 'js/master.js' %}"></script>

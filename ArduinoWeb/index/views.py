@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from index.controller import *
+from index.models import *
+import schedule
 
 # Create your views here.
 def index_view (request):
-    valeur = readValue(5)
     if request.POST:
         id = request.POST['id']
         if int(id) == 1:
@@ -24,7 +25,9 @@ def index_view (request):
         elif int(id) == 6:
             blinkall()
         elif int(id) == 7:
-            readValue(5)
+            fonction()
         # print(id)
     # ,{'valeur_lue' : valeur}
-    return render(request, 'index.html')
+    valeur = AHT20.objects.all()
+    valeur = reversed(valeur)
+    return render(request, 'index.html',{'valeur_lue' : valeur})
